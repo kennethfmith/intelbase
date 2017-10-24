@@ -2,6 +2,7 @@ var express = require("express");
 var http = require("http");
 var bodyParser = require("body-parser");
 
+const config = require("./config");
 const routes = require("./routes");
 
 var app = express();
@@ -20,4 +21,4 @@ app.use(function(req, res, next) {
 app.use("/", routes);
 
 app.listen(3000);
-console.log("intelweb running on port 3000");
+console.log("intelbase running on port 3000");

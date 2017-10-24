@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.post('/testPost', function(req, res){
 console.log("Request handler post was called.");
-res.send("GOOD");
+res.send(process.env._DB_USER);
 });
 
 router.get("/", function(req, res)
@@ -33,6 +33,7 @@ router.get("/:userID", function(req, res)
   });
 });
 
+// new user
 router.post("/", function(req, res)
 {
   user.newUser(req.body, function(err, data)
@@ -45,6 +46,7 @@ router.post("/", function(req, res)
   });
 });
 
+// update user
 router.put("/", function(req, res)
 {
   user.updateUser(req.body, function(err, data)
@@ -57,6 +59,7 @@ router.put("/", function(req, res)
   });
 });
 
+// delete user
 router.delete("/", function(req, res)
 {
   user.deleteUser(req.body, function(err, data)
@@ -69,5 +72,13 @@ router.delete("/", function(req, res)
   });
 });
 
+router.post("/login", function(req, res) {
+  user.authenticateUser(req.body, function(err, data){
+    if(err) {
+      throw err;
+    }
+
+  })
+})
 
 module.exports = router;

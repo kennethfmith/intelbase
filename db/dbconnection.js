@@ -1,11 +1,12 @@
 var mysql = require("mysql");
+const config = require("../config");
 
 var pool = mysql.createPool({
     connectionLimit : 10,
-    host: "smithical.com",
-    password: "Deepcr1k",
-    user: "smithica_dba1",
-    database: "smithica_test1"
+    host: config.database.host,
+    password: config.database.password,
+    user: config.database.user,
+    database: config.database.db
 
 });
 
@@ -138,6 +139,5 @@ var dbconnection =
     });
   }
 }
-
 
 module.exports = dbconnection;

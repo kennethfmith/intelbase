@@ -90,6 +90,14 @@ var user =
         callback(null, JSON.stringify(data));
       }
     });
+  },
+
+  authenticateUser:function(data, callback){
+    // parse data (username, password)
+    // query db for username, userid, and salt
+    // encode pwd + salt
+    // query db for password match
+    // return result
   }
 }
 
