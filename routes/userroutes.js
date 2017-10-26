@@ -36,6 +36,7 @@ router.get("/:userID", function(req, res)
 // new user
 router.post("/", function(req, res)
 {
+  var x = req.body;
   user.newUser(req.body, function(err, data)
   {
     if (err)

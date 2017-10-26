@@ -1,4 +1,5 @@
 var db = require("../db/dbconnection");
+var userhelp = require("../helpers/user_helper.js");
 
 /* USER FIELDS
  UserID
@@ -51,6 +52,14 @@ var user =
 
   newUser:function(data, callback)
   {
+    var pwdX;
+    var pwd = data.Password;
+    console.log("pwd = " + pwd);
+    userhelp.cryptIt(pwd,"dsdjf0sd9ffncxi", (err, data) => {
+        pwdX = data;
+    });
+    callback(null, pwdX);
+    /*
     //var tempdata = { 'FullName':'Mike Krisky','Password':'sluggy' };
     db.insert("INSERT INTO users SET ?", data, (err, data) => {
       if (err)
@@ -61,6 +70,7 @@ var user =
         callback(null, JSON.stringify(data));
       }
     });
+    */
   },
 
   updateUser:function(data, callback)
